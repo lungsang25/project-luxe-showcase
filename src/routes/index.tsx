@@ -1,26 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ParallaxBackground } from "@/components/ParallaxBackground";
+import { ProfileCard } from "@/components/ProfileCard";
+import { ProjectGrid } from "@/components/ProjectGrid";
+import { profile } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: `${profile.name} — Projects` },
+      {
+        name: "description",
+        content: `Selected tech projects by ${profile.name}. ${profile.tagline}.`,
+      },
+      { property: "og:title", content: `${profile.name} — Projects` },
+      {
+        property: "og:description",
+        content: `Selected tech projects by ${profile.name}.`,
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="relative min-h-screen">
+      <ParallaxBackground />
+      <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet"
+      />
+
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-8 px-5 py-10 sm:gap-10 sm:py-14">
+        <ProfileCard />
+        <ProjectGrid />
+      </section>
+    </main>
+  );
 }
