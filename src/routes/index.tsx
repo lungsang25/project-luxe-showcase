@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ParallaxBackground } from "@/components/ParallaxBackground";
+import { SpaceBackground } from "@/components/SpaceBackground";
 import { ProfileCard } from "@/components/ProfileCard";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { profile } from "@/data/projects";
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="relative min-h-screen">
-      <ParallaxBackground />
+      <SpaceBackground />
       <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
